@@ -2,6 +2,9 @@ require 'resolv'
 
 # DNS model
 class Dns < ApplicationRecord
+  has_many :dns_hostname
+  has_many :hostnames, through: :dns_hostname
+
   validates :IP,
             presence: true,
             uniqueness: true,
