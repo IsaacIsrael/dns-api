@@ -1,3 +1,3 @@
 class Dns < ApplicationRecord
-  validates :IP, presence: true
+  validates :IP, presence: true, uniqueness: true
 end
