@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :hostname do
-    name "MyString"
+    sequence(:name) { |n| "hostname#{n}.com" }
   end
 end
