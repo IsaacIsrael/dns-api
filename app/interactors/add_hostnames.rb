@@ -3,6 +3,7 @@ class AddHostnames
 
   def call
     hostnames = context.hostnames || []
+    context.fail!(errors: 'is not a array') unless hostnames.kind_of?(Array)
 
     ActiveRecord::Base.transaction do
       hostnames.each do |hostname|
