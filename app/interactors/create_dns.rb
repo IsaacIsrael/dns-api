@@ -10,4 +10,8 @@ class CreateDns
       context.fail!(errors: dns.errors.messages)
     end
   end
+
+  def rollback
+    context.dns.destroy
+  end
 end
