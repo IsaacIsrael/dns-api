@@ -1,7 +1,11 @@
 class Api::V1::DnsController < ApplicationController
   def create
     result = CreateDnsWithHostnames.call(dns_params)
-    render json: result.dns.as_json(only: [:id]), status: :created
+    if result.success?
+      render json: result.dns.as_json(only: [:id]), status: :created
+    else
+      render json: { error: result.errors }, status: :bad_request
+    end
   end
 
   private
