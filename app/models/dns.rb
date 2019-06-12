@@ -19,4 +19,11 @@ class Dns < ApplicationRecord
               .group(:id)
               .having('COUNT(dns.id) = ?', hostnames.count))
   }
+
+  scope :excluded, ->(hostnames) {
+    where.not(id: Dns.select('id')
+              .joins(:hostnames)
+              .where('hostnames.name in (?)', hostnames)
+              .uniq)
+  }
 end
