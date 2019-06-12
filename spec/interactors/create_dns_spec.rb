@@ -13,6 +13,8 @@ RSpec.describe CreateDns, type: :interactor do
       end
     end
     context 'when given invalid dns' do
+      let(:params) { FactoryBot.attributes_for(:dns, IP: nil) }
+      subject(:context) { CreateDns.call(params) }
       it 'fails' do
         expect(context).to be_a_failure
       end
