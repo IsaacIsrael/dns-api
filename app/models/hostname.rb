@@ -1,3 +1,6 @@
+# Hostname Model
 class Hostname < ApplicationRecord
-   validates :name, presence: true
+  validates :name,
+            presence: true,
+            uniqueness: true
 end
