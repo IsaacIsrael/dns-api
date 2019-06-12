@@ -1,6 +1,9 @@
 class Api::V1::DnsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
+  def index
+  end
+
   def create
     result = CreateDnsWithHostnames.call(dns_params)
     if result.success?
