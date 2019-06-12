@@ -5,7 +5,7 @@ RSpec.describe "ApiV1Dns", type: :request do
     context 'when given valid params' do
       let(:ip) { FactoryBot.attributes_for(:dns)[:IP] }
       let(:hostnames) { Array.new(5).map { FactoryBot.attributes_for(:hostname)[:name] } }
-      let(:dns_parameters) { { ip: ip, hostnames: hostnames } }
+      let(:dns_parameters) { { IP: ip, hostnames: hostnames } }
       subject(:call) { post api_v1_dns_path, params: dns_parameters }
 
       it 'have http status 201' do
@@ -25,7 +25,7 @@ RSpec.describe "ApiV1Dns", type: :request do
     end
     context 'when  not given dns' do
       let(:hostnames) { Array.new(5).map { FactoryBot.attributes_for(:hostname)[:name] } }
-      let(:dns_parameters) { {  hostnames: hostnames } }
+      let(:dns_parameters) { { hostnames: hostnames } }
       subject(:call) { post api_v1_dns_path, params: dns_parameters }
 
       it 'have http status 400' do
@@ -46,7 +46,7 @@ RSpec.describe "ApiV1Dns", type: :request do
     context 'when given invalid hostnames' do
       let(:ip) { FactoryBot.attributes_for(:dns)[:IP] }
       let(:hostnames) { ['lorem.com', 'lorem.com'] }
-      let(:dns_parameters) { { ip: ip, hostnames: hostnames } }
+      let(:dns_parameters) { { IP: ip, hostnames: hostnames } }
       subject(:call) { post api_v1_dns_path, params: dns_parameters }
 
       it 'have http status 400' do
