@@ -2,6 +2,8 @@ class Api::V1::DnsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
+    result = SearchDnsHostname.call(page: params[:page], filter: filter)
+    render json: result.response, status: :ok
   end
 
   def create
@@ -17,5 +19,9 @@ class Api::V1::DnsController < ApplicationController
 
   def dns_params
     params.permit(:IP, hostnames: [])
+  end
+
+  def filter
+    { included: params[:included], excluded: params[:excluded] }
   end
 end
