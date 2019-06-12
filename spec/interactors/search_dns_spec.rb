@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe SearchDns, type: :interactor do
-  let!(:dns1) {  CreateDnsWithHostnames.call(ip: '1.1.1.1', hostnames: ['lorem.com', 'ipsum.com', 'dolor.com', 'amet.com']) }
-  let!(:dns2) {  CreateDnsWithHostnames.call(ip: '2.2.2.2', hostnames: ['ipsum.com']) }
-  let!(:dns3) {  CreateDnsWithHostnames.call(ip: '3.3.3.3', hostnames: ['dolor.com', 'ipsum.com', 'amet.com']) }
-  let!(:dns4) {  CreateDnsWithHostnames.call(ip: '4.4.4.4', hostnames: ['dolor.com', 'ipsum.com', 'sit.com', 'amet.com']) }
-  let!(:dns5) {  CreateDnsWithHostnames.call(ip: '5.5.5.5', hostnames: ['dolor.com', 'sit.com']) }
+  let!(:dns1) {  CreateDnsWithHostnames.call(IP: '1.1.1.1', hostnames: ['lorem.com', 'ipsum.com', 'dolor.com', 'amet.com']) }
+  let!(:dns2) {  CreateDnsWithHostnames.call(IP: '2.2.2.2', hostnames: ['ipsum.com']) }
+  let!(:dns3) {  CreateDnsWithHostnames.call(IP: '3.3.3.3', hostnames: ['dolor.com', 'ipsum.com', 'amet.com']) }
+  let!(:dns4) {  CreateDnsWithHostnames.call(IP: '4.4.4.4', hostnames: ['dolor.com', 'ipsum.com', 'sit.com', 'amet.com']) }
+  let!(:dns5) {  CreateDnsWithHostnames.call(IP: '5.5.5.5', hostnames: ['dolor.com', 'sit.com']) }
 
   describe '.call' do
     context 'when without params' do

@@ -2,6 +2,6 @@ class SearchDns
   include Interactor
 
   def call
-    # TODO
+    context.dns = Dns.all
   end
 end
