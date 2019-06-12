@@ -2,8 +2,12 @@ class Api::V1::DnsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    result = SearchDnsHostname.call(page: params[:page], filter: filter)
-    render json: result.response, status: :ok
+    if params[:page]
+      result = SearchDnsHostname.call(page: params[:page], filter: filter)
+      render json: result.response, status: :ok
+    else
+      render json: { error: 'Page params is required' }, status: :bad_request
+    end
   end
 
   def create
