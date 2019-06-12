@@ -5,12 +5,20 @@ RSpec.describe CreateDns, type: :interactor do
     context 'when given valid dns' do
       let(:params) { FactoryBot.attributes_for(:dns) }
       subject(:context) { CreateDns.call(params) }
-      it 'succeeds'
-      it 'save dns'
+      it 'success' do
+        expect(context).to be_a_success
+      end
+      it 'save dns' do
+        expect { context }.to change(Dns.all, :count).by(1)
+      end
     end
     context 'when given invalid dns' do
-      it 'fails'
-      it 'dont save dns'
+      it 'fails' do
+        expect(context).to be_a_failure
+      end
+      it 'dont save dns' do
+        expect { context }.to_not change(Dns.all, :count)
+      end
     end
   end
 end
