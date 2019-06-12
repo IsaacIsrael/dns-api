@@ -22,7 +22,7 @@ The base URL of the API is `/api/v1/`. Feel free to test the API using [Postman]
 #### Post a DNS with hostnames `POST 'dns'`
 
 Will post a new dns with hostnames on our API's database
-In the request body, you have to send the details of the post, in the following JSON format:
+In the request body, you have to send the details of the dns and hostnames, in the following JSON format:
 
 ```bash
 curl -H "Content-Type: application/json" -X POST -d '{"IP":"1.1.1.1", "hostnames": ["lorem.com","ipsum.com","dolor.com","amet.com"] }' http://localhost:3000/api/v1/dns
