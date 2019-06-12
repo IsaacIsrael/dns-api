@@ -1,0 +1,2 @@
+class Dns < ApplicationRecord
+end
