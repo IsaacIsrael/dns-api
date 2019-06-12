@@ -65,4 +65,27 @@ RSpec.describe "ApiV1Dns", type: :request do
       end
     end
   end
+
+  describe 'GET /api_v1_dns' do
+    context 'when given valid params' do
+      let(:page) { 1 }
+      let(:included) { ['ipsum.com', 'dolor.com'] }
+      let(:excluded) { ['sit.com'] }
+      subject(:call) { get api_v1_dns_path, params: { page: page, included: included, excluded: excluded } }
+
+      it 'have http status 200'
+      it 'return dns array'
+      it 'return hostname array'
+      it 'return total'
+    end
+    context 'when given invalid params' do
+      let(:included) { ['ipsum.com', 'dolor.com'] }
+      let(:excluded) { ['sit.com'] }
+      subject(:call) { get api_v1_dns_path, params: { included: included, excluded: excluded } }
+
+      it 'have http status 400'
+      it 'return error'
+    end
+  end
+
 end
